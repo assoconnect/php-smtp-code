@@ -18,7 +18,7 @@ class Parser
         $this->textSearchParser = new TextSearchParser();
     }
 
-    public function __invoke(string $message, bool $permanent): ?Code
+    public function parse(string $message, bool $permanent): ?Code
     {
         // Search with a regex
         if ($code = $this->regexParser->parse($message)) {
