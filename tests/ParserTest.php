@@ -31,7 +31,7 @@ class ParserTest extends TestCase
     public function testParserWorks(string $message, bool $permanent, ?string $expectedSmtpCode): void
     {
         $parser = new Parser();
-        $actualCode = $parser($message, $permanent);
+        $actualCode = $parser->parse($message, $permanent);
 
         if (null === $expectedSmtpCode) {
             $this->assertNull($actualCode);
