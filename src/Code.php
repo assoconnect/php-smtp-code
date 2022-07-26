@@ -30,7 +30,7 @@ class Code
         $this->detail = $detail;
     }
 
-    public static function buildFromString(string $code)
+    public static function buildFromString(string $code): self
     {
         if (preg_match('/^(2|4|5)\.([0-7]{1,3})\.([0-9]{1,3})$/', $code, $matches) !== 1) {
             throw new InvalidCodeException($code);

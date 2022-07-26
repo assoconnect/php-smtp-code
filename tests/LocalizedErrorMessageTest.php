@@ -11,7 +11,7 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 class LocalizedErrorMessageTest extends TestCase
 {
-    public function providerEvents(): iterable
+    public function providerEvents(): \Generator
     {
         yield [4, 1, 2, 'unknown'];
         yield [5, 7, 1, '5.7.1'];
@@ -20,10 +20,10 @@ class LocalizedErrorMessageTest extends TestCase
     /**
      * @dataProvider providerEvents
      */
-    public function testTransWorks(int $class, int $subject, int $detail, $expected): void
+    public function testTransWorks(int $class, int $subject, int $detail, string $expected): void
     {
         $translator = $this->createMock(TranslatorInterface::class);
-        $translator->expects($this->once())->method('trans')
+        $translator->expects(self::once())->method('trans')
             ->with($expected, [], 'smtp')->willReturn($expected);
         $code = new Code($class, $subject, $detail);
         $localizedErrorMessage = new LocalizedErrorMessage($code);

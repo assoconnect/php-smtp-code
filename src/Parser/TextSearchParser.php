@@ -34,7 +34,7 @@ class TextSearchParser
         return null;
     }
 
-    private function getNeedles(bool $permanent): iterable
+    private function getNeedles(bool $permanent): \Generator
     {
         // X.1.1 Bad destination mailbox address
         yield 'mailbox not found' => '5.1.1';

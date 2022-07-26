@@ -25,7 +25,7 @@ class RegexParser
         return null;
     }
 
-    private function getPatterns(): iterable
+    private function getPatterns(): \Generator
     {
         // 4.2.2 The email account that you tried to reach is over quota.
         yield sprintf('/^%s /', self::REGEXP);

@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 class ParserTest extends TestCase
 {
-    public function providerEvents(): iterable
+    public function providerEvents(): \Generator
     {
         yield ['4.2.2 The email account that you tried to reach is over quota.', false, '4.2.2'];
         yield ['smtp; 5.3.0 - Other mail system problem', true, '5.3.0'];
@@ -34,10 +34,10 @@ class ParserTest extends TestCase
         $actualCode = $parser->parse($message, $permanent);
 
         if (null === $expectedSmtpCode) {
-            $this->assertNull($actualCode);
+            self::assertNull($actualCode);
         } else {
-            $this->assertNotNull($actualCode, 'Code not parsed');
-            $this->assertSame($expectedSmtpCode, $actualCode->getCode());
+            self::assertNotNull($actualCode, 'Code not parsed');
+            self::assertSame($expectedSmtpCode, $actualCode->getCode());
         }
     }
 }

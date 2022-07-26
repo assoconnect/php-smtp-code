@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 class TextSearchParserTest extends TestCase
 {
-    public function providerInconsistentMessage(): iterable
+    public function providerInconsistentMessage(): \Generator
     {
         yield ['mailbox not found', false];
         yield ['greylisted', true];
@@ -19,6 +19,6 @@ class TextSearchParserTest extends TestCase
     public function testSeverityIsConsistent(string $message, bool $permanent): void
     {
         $parser = new TextSearchParser();
-        $this->assertNull($parser->parse($message, $permanent));
+        self::assertNull($parser->parse($message, $permanent));
     }
 }

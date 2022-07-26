@@ -19,15 +19,15 @@ class CodeTest extends TestCase
     public function testGettersWork(): void
     {
         $code = new Code($class = 4, $subject = 1, $detail = 2);
-        $this->assertSame($class, $code->getClass());
-        $this->assertSame($subject, $code->getSubject());
-        $this->assertSame($detail, $code->getDetail());
-        $this->assertSame('4.1.2', $code->getCode());
+        self::assertSame($class, $code->getClass());
+        self::assertSame($subject, $code->getSubject());
+        self::assertSame($detail, $code->getDetail());
+        self::assertSame('4.1.2', $code->getCode());
     }
 
     public function testIsPermanent(): void
     {
-        $this->assertTrue((new Code(5, 0, 0))->isPermanent());
-        $this->assertFalse((new Code(4, 0, 0))->isPermanent());
+        self::assertTrue((new Code(5, 0, 0))->isPermanent());
+        self::assertFalse((new Code(4, 0, 0))->isPermanent());
     }
 }

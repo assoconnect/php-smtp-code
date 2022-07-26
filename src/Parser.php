@@ -21,12 +21,12 @@ class Parser
     public function parse(string $message, bool $permanent): ?Code
     {
         // Search with a regex
-        if ($code = $this->regexParser->parse($message)) {
+        if (null !== $code = $this->regexParser->parse($message)) {
             return $code;
         }
 
         // Search with a string
-        if ($code = $this->textSearchParser->parse($message, $permanent)) {
+        if (null !== $code = $this->textSearchParser->parse($message, $permanent)) {
             return $code;
         }
 

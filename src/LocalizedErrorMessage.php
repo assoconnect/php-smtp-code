@@ -28,7 +28,7 @@ class LocalizedErrorMessage implements TranslatableInterface
         return $translator->trans('unknown', [], self::TRANSLATION_DOMAIN);
     }
 
-    public static function getTranslations(): iterable
+    public static function getTranslations(): \Generator
     {
         yield '2.2.1';
         yield '5.7.1';
