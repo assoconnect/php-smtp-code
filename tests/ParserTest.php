@@ -30,8 +30,7 @@ class ParserTest extends TestCase
     /** @dataProvider providerEvents */
     public function testParserWorks(string $message, bool $permanent, ?string $expectedSmtpCode): void
     {
-        $parser = new Parser();
-        $actualCode = $parser->parse($message, $permanent);
+        $actualCode = Parser::parse($message, $permanent);
 
         if (null === $expectedSmtpCode) {
             self::assertNull($actualCode);
