@@ -43,6 +43,12 @@ class TextSearchParser
         yield 'Unknown user' => '5.1.1';
         yield 'User unknown' => '5.1.1';
         yield 'Utilisateur inconnu' => '5.1.1';
+        yield 'Recipient not found' => '5.1.1';
+        yield 'Invalid recipient' => '5.1.1';
+        yield 'No MX for' => '5.1.1';
+        yield 'unable to connect to MX servers' => '5.1.1';
+        yield 'unverified address' => '4.1.1';
+
         // Used by Gmail
         yield 'smtp; The email account that you tried to reach does not exist' => '5.1.1';
         // Used by IBM - Domino Directory
@@ -51,26 +57,49 @@ class TextSearchParser
         // X.2.1 Mailbox disabled, not accepting messages
         yield 'mailbox unavailable' => $permanent ? '5.2.1' : '4.2.1';
         yield 'This address no longer accepts mail' => $permanent ? '5.2.1' : '4.2.1';
+        yield 'mailbox is inactive' => $permanent ? '5.2.1' : '4.2.1';
+        yield 'blocked due to inactivity' => $permanent ? '5.2.1' : '4.2.1';
 
         // X.2.2 Mailbox full
         yield 'account is full' => $permanent ? '5.2.2' : '4.2.2';
         yield 'over quota' => $permanent ? '5.2.2' : '4.2.2';
+        yield 'quota exceeded' => $permanent ? '5.2.2' : '4.2.2';
+        yield 'low disk space' => $permanent ? '5.2.2' : '4.2.2';
+
+        // X.3.1 storage
+        yield 'Insufficient system storage' => '4.3.1';
+        yield 'exceeded storage' => '4.3.1';
+
+        // X.3.2 Busy servers
+        yield 'All server ports are busy' => '4.3.2';
+        yield 'Temporary failure' => '4.3.2';
 
         // X.4.2 Bad connection
         yield 'Connection timed out' => $permanent ? '5.4.2' : '4.4.2';
         yield 'timeout' => $permanent ? '5.4.2' : '4.4.2';
+        yield 'Error: timeout exceeded' => '4.4.2';
+
+        // X.4.5 too many connections from host
+        yield 'Too many connections from your host' => '4.4.5';
 
         // X.4.6 Routing loop detected
         yield 'hop count exceeded' => $permanent ? '5.4.6' : '4.4.6';
 
         // X.5.0 Other or undefined protocol status
-        yield 'No MX' => '5.5.0';
-        yield 'mailbox not found' => '5.5.0';
+        yield 'Not allowed.' => '5.5.0';
+
+        // X.5.1 Local error
+        yield 'Local Error' => '4.5.1';
+
+        // X.7.0 Temporary deffered
+        yield 'Our system is temporarily deferring non-urgent emails' => '4.7.0';
 
         // X.7.1 Delivery not authorized, message refused
         yield 'message has been greylisted' => '4.7.1';
         yield 'Your message looks like SPAM or has been reported as SPAM' => $permanent ? '5.7.1' : '4.7.1';
         yield 'Not delivering to a user who marked your messages as spam' => $permanent ? '5.7.1' : '4.7.1';
+        yield 'temporary greylisted' => '4.7.1';
+        yield 'greylisted' => '4.7.1';
         // Used by Free
         yield 'Too many spams from your IP' => $permanent ? '5.7.1' : '4.7.1';
         yield 'spam detected' => $permanent ? '5.7.1' : '4.7.1';
@@ -93,5 +122,9 @@ class TextSearchParser
 
         // 2.2.1
         yield 'Service closing transmission channel' => '2.2.1';
+
+        // Mailgun specificity
+        yield 'Not delivering to previously bounced address' => 'mailgun_bounced';
+        yield 'Too old' => 'mailgun_too_old';
     }
 }
